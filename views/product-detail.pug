@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  section.product-detail
+    .detail-art
+      img.detail-image(src=product.image, alt=`${product.displayName} mystery box image`)
+    .detail-info
+      p.kicker= product.displayTheme
+      h1= product.displayName
+      p.lead= product.description
+      .detail-meta
+        div
+          span.meta-label Price
+          strong $#{product.formattedPrice}
+        div
+          span.meta-label Stock
+          if product.stock > 0
+            strong #{product.stock} available
+          else
+            strong Sold out
+        div
+          span.meta-label Product ID
+          strong= product.id
+      h2 Why customers choose it
+      ul.contents-list
+        li Curated around the #{product.displayTheme} theme
+        li Includes several surprise items in one box
+        li Good for gifts, dorm rooms, hobbies, or personal treats
+      .purchase-panel
+        if product.stock > 0
+          label(for="quantity") Quantity
+          input#quantity(type="number", min="1", max=product.stock, value="1")
+          button.btn(type="button", data-add-to-cart=product.id) Add to Cart
+          a.btn.btn-secondary(href="/cart") Go to Cart
+        else
+          button.btn(type="button", disabled) Sold Out
+          a.btn.btn-secondary(href="/products") Keep Shopping
+  section.section
+    .empty-card
+      h2 Need more options?
+      p Explore the full collection to find another themed mystery box.
+      a.btn(href="/products") Back to Products

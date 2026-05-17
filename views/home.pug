@@ -1,0 +1,40 @@
+extends layout
+include includes/product-card.pug
+
+block content
+  section.hero
+    .hero-copy
+      p.eyebrow 12 curated mystery boxes
+      h1 Unlock a surprise box made for your vibe.
+      p.hero-text Mystery Crate Co. sells themed mystery boxes for gaming, anime, self-care, snacks, tech, pets, books, art, and more.
+      form.hero-search(method="get", action="/products")
+        label.sr-only(for="hero-q") Search products
+        input#hero-q(type="search", name="q", placeholder="Try gaming, snacks, pets, anime...")
+        button.btn(type="submit") Search
+      .hero-actions
+        a.btn(href="/products") Shop all boxes
+        a.btn.btn-secondary(href="/cart") View cart
+    .hero-display
+      .hero-mystery-card
+        span.hero-question ?
+        p.bold #{productCount} boxes ready to browse
+        p Pick a theme, add it to your cart, and place a mock order.
+  section.info-strip
+    .info-card
+      h3 Search
+      p Find boxes by name, theme, description, or keyword.
+    .info-card
+      h3 Add to Cart
+      p Your cart saves in the browser while you keep shopping.
+    .info-card
+      h3 Checkout
+      p Orders save to SQLite and product stock updates automatically.
+  section.section
+    .section-heading
+      div
+        p.eyebrow Storefront
+        h2 All Mystery Boxes
+      a.text-link(href="/products") Filter products
+    .product-grid
+      each product in products
+        +productCard(product)

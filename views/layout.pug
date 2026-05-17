@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title} | Mystery Crate Co.
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    header.site-header
+      nav.navbar
+        a.brand(href="/", aria-label="Mystery Crate Co. home")
+          span.brand-mark ?
+          span Mystery Crate Co.
+        form.nav-search(method="get", action="/products")
+          label.sr-only(for="nav-q") Search products
+          input#nav-q(type="search", name="q", placeholder="Search mystery boxes", value=searchQuery)
+          button(type="submit") Search
+        button.nav-toggle(type="button", aria-label="Toggle navigation") Menu
+        .nav-links
+          a(href="/") Home
+          a(href="/products") Products
+          a(href="/about") About
+          a(href="/faq") FAQ
+          a.cart-link(href="/cart")
+            span Cart
+            span#cart-count.cart-count 0
+          if currentUser
+            a(href="/profile") Profile
+            form.nav-form(method="post", action="/logout")
+              button.link-button(type="submit") Logout
+          else
+            a(href="/login") Login
+            a.btn.btn-small(href="/register") Register
+    main.site-main
+      block content
+    footer.site-footer
+      .footer-inner
+        p &copy; #{currentYear} Mystery Crate Co. Built for CSC 317.
+        p.footer-links
+          a(href="/about") About
+          span  | 
+          a(href="/faq") FAQ
+          span  | 
+          a(href="/api/products") Products API
+          span  | 
+          a(href="/cart") Cart
+    script(src="/js/shop.js")

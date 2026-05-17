@@ -1,0 +1,29 @@
+extends layout
+include includes/product-card.pug
+
+block content
+  section.page-hero
+    p.eyebrow Shop
+    h1 Mystery Box Collection
+    p Browse all 12 products, filter by theme, or search by product name and keyword.
+  section.section
+    form.filter-bar(method="get", action="/products")
+      label.sr-only(for="q") Search products
+      input#q(type="search", name="q", value=q, placeholder="Search boxes, themes, descriptions, or IDs")
+      label.sr-only(for="theme") Theme
+      select#theme(name="theme")
+        option(value="") All themes
+        each option in themes
+          option(value=option, selected=theme === option.toLowerCase())= option
+      button.btn(type="submit") Search
+      if q || theme
+        a.btn.btn-secondary(href="/products") Clear
+    if products.length
+      .product-grid
+        each product in products
+          +productCard(product)
+    else
+      .empty-card
+        h2 No products found
+        p Try a different search term or clear the filter.
+        a.btn(href="/products") Show all products

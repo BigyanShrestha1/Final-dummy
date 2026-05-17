@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Cozy Mystery mystery box</title>
+  <desc id="desc">A stylized product image for the Self-Care mystery box.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e6844a"/>
+      <stop offset="100%" stop-color="#ffe0b3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" rx="56" fill="url(#bg)"/>
+  <circle cx="110" cy="90" r="62" fill="#ffffff" opacity="0.18"/>
+  <circle cx="690" cy="120" r="86" fill="#ffffff" opacity="0.16"/>
+  <circle cx="700" cy="500" r="118" fill="#000000" opacity="0.08"/>
+  <g filter="url(#shadow)">
+    <path d="M220 250 L400 160 L580 250 L400 345 Z" fill="#ffffff" opacity="0.94"/>
+    <path d="M220 250 L400 345 L400 490 L220 390 Z" fill="#f5efe7"/>
+    <path d="M580 250 L400 345 L400 490 L580 390 Z" fill="#e9dccb"/>
+    <path d="M220 250 L400 345 L580 250 L400 160 Z" fill="#fffaf4"/>
+    <path d="M400 160 L400 345" stroke="#d1bda7" stroke-width="10" opacity="0.8"/>
+    <path d="M292 215 L472 306" stroke="#e6844a" stroke-width="18" opacity="0.82"/>
+    <path d="M508 215 L328 306" stroke="#ffe0b3" stroke-width="18" opacity="0.82"/>
+    <rect x="342" y="334" width="116" height="84" rx="20" fill="#e6844a" opacity="0.92"/>
+    <text x="400" y="393" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="900" fill="#ffffff">?</text>
+  </g>
+  <rect x="95" y="455" width="610" height="72" rx="28" fill="#ffffff" opacity="0.86"/>
+  <text x="400" y="485" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#24160f">Cozy Mystery</text>
+  <text x="400" y="516" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#715f57">Self-Care Mystery Box</text>
+</svg>

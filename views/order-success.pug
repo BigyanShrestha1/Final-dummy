@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  section.page-hero.success-hero
+    p.eyebrow Order placed
+    h1 Thank you for your mock order!
+    p Your order ID is #[strong #{order.id}]. A real payment was not processed.
+  section.order-success
+    .summary-card.order-card
+      h2 Customer Details
+      p #[strong Name:] #{order.customerName}
+      p #[strong Email:] #{order.email}
+      p #[strong Ship to:] #{order.address}, #{order.city}, #{order.state} #{order.zip}
+    .summary-card.order-card
+      h2 Items Purchased
+      each item in items
+        .order-item
+          img.order-thumb(src=item.product.image, alt="")
+          span #{item.product.displayName} x #{item.quantity}
+          strong $#{item.subtotal}
+      .summary-row
+        span Subtotal
+        strong $#{order.subtotal}
+      .summary-row
+        span Tax
+        strong $#{order.tax}
+      .summary-row.summary-total
+        span Total
+        strong $#{order.total}
+      a.btn.btn-wide(href="/products") Keep Shopping
+  script.
+    localStorage.removeItem("mysteryBoxCart");

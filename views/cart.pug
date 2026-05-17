@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  section.page-hero
+    p.eyebrow Cart
+    h1 Your Mystery Box Cart
+    p Review quantities, remove items, and continue to the mock payment page.
+  section.cart-shell#cart-page
+    if error
+      .alert.alert-error= error
+    .cart-main
+      .cart-table-wrap
+        table.cart-table
+          thead
+            tr
+              th Product
+              th Price
+              th Quantity
+              th Subtotal
+              th Remove
+          tbody#cart-items
+            tr
+              td(colspan="5") Loading cart...
+      .cart-actions
+        a.btn.btn-secondary(href="/products") Continue Shopping
+        button.btn.btn-danger(type="button", id="clear-cart") Clear Cart
+    aside.summary-card
+      h2 Order Summary
+      .summary-row
+        span Subtotal
+        strong#cart-subtotal $0.00
+      .summary-row
+        span Estimated tax
+        strong#cart-tax $0.00
+      .summary-row.summary-total
+        span Total
+        strong#cart-total $0.00
+      a.btn.btn-wide#checkout-link(href="/checkout") Checkout

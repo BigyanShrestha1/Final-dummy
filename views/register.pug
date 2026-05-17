@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  section.auth-page
+    .auth-card
+      p.eyebrow Join the shop
+      h1 Register
+      p Create an account with a hashed password. Your orders will appear on your profile page.
+      if error
+        .alert.alert-error= error
+      form(method="post", action="/register")
+        .form-group
+          label(for="name") Name
+          input#name(type="text", name="name", value=values.name, minlength="2", required)
+        .form-group
+          label(for="email") Email
+          input#email(type="email", name="email", value=values.email, required)
+        .form-group
+          label(for="password") Password
+          input#password(type="password", name="password", minlength="6", required)
+        .form-group
+          label(for="confirmPassword") Confirm password
+          input#confirmPassword(type="password", name="confirmPassword", minlength="6", required)
+        button.btn.btn-wide(type="submit") Register
+      p.auth-note Already registered? #[a(href="/login") Login]

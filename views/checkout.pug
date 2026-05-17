@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  section.page-hero
+    p.eyebrow Checkout
+    h1 Shipping + Mock Payment
+    p Enter shipping details and a fake payment code. This demo saves your order and reduces product stock in SQLite.
+  section.checkout-shell#checkout-page
+    .checkout-form-card
+      if error
+        .alert.alert-error= error
+      form#checkout-form(method="post", action="/checkout")
+        input#cart-json(type="hidden", name="cartJson")
+        .form-grid
+          .form-group.full
+            label(for="customerName") Full name
+            input#customerName(type="text", name="customerName", value=values.customerName, required)
+          .form-group.full
+            label(for="email") Email
+            input#email(type="email", name="email", value=values.email, required)
+          .form-group.full
+            label(for="address") Address
+            input#address(type="text", name="address", value=values.address, required)
+          .form-group
+            label(for="city") City
+            input#city(type="text", name="city", value=values.city, required)
+          .form-group
+            label(for="state") State
+            input#state(type="text", name="state", value=values.state, required)
+          .form-group
+            label(for="zip") ZIP
+            input#zip(type="text", name="zip", value=values.zip, required)
+          .form-group.full
+            label(for="paymentCode") Mock payment code
+            input#paymentCode(type="text", name="paymentCode", value=values.paymentCode, inputmode="numeric", placeholder="Use any 4+ digits", required)
+            small Do not enter real card information.
+        button.btn.btn-wide(type="submit") Place Mock Order
+    aside.summary-card
+      h2 Cart Summary
+      div#checkout-summary
+        p Loading cart summary...
+      .summary-row
+        span Subtotal
+        strong#cart-subtotal $0.00
+      .summary-row
+        span Estimated tax
+        strong#cart-tax $0.00
+      .summary-row.summary-total
+        span Total
+        strong#cart-total $0.00
+      a.text-link(href="/cart") Edit cart

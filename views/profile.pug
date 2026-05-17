@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  section.page-hero
+    p.eyebrow Account
+    h1 Profile
+    if currentUser
+      p Welcome, #[strong #{currentUser.name}]! Your purchase history is listed below.
+    else
+      p Login or create an account to connect orders to your profile.
+  section.section
+    if currentUser
+      .profile-grid
+        .summary-card
+          h2 User Information
+          p #[strong Name:] #{currentUser.name}
+          p #[strong Email:] #{currentUser.email}
+          form(method="post", action="/logout")
+            button.btn.btn-secondary(type="submit") Logout
+        .summary-card
+          h2 Purchase History
+          if orders.length
+            each order in orders
+              .order-history-item
+                .order-history-top
+                  strong Order #{order.id}
+                  span $#{order.formattedTotal}
+                small Purchased on #{order.created_at}
+                ul.history-list
+                  each item in order.items
+                    li #{item.product_name} x #{item.quantity} — $#{Number(item.price * item.quantity).toFixed(2)}
+          else
+            p You do not have any saved orders yet.
+            a.btn(href="/products") Start Shopping
+    else
+      .empty-card
+        h2 You are not logged in
+        p You can still shop as a guest, but a profile lets your purchase history appear here.
+        a.btn(href="/login") Login
+        a.btn.btn-secondary(href="/register") Register

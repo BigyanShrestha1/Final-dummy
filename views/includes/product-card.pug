@@ -1,0 +1,16 @@
+mixin productCard(product)
+  article.product-card
+    a.product-card-link(href=`/products/${product.id}`)
+      img.product-image(src=product.image, alt=`${product.displayName} mystery box image`)
+      .product-body
+        p.kicker= product.displayTheme
+        h3= product.displayName
+        p= product.description
+    .product-card-footer
+      .price-block
+        strong $#{product.formattedPrice}
+        if product.stock > 0
+          span.stock #{product.stock} in stock
+        else
+          span.stock.stock-out Sold out
+      button.btn.btn-wide(type="button", data-add-to-cart=product.id, disabled=product.stock === 0) Add to Cart
