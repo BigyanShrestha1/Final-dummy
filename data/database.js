@@ -6,7 +6,7 @@ const { open } = require("sqlite");
 const DATA_DIR = __dirname;
 const DB_FILE = path.join(DATA_DIR, "database.sqlite");
 
-const seedProducts = [
+const seedProducts = [ 
   {
     id: "box-001",
     name: "Starter Surprise",
