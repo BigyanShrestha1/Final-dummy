@@ -4,7 +4,7 @@ const setupDb = require("./data/database");
 const { sessionMiddleware } = require("./middleware/session");
 const pagesRoutes = require("./routes/pages");
 const authRoutes = require("./routes/auth");
-const productsRoutes = require("./routes/products");
+const productsRoutes = require("./routes/products"); 
 const usersRoutes = require("./routes/users");
 const cartRoutes = require("./routes/cart");
 
